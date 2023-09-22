@@ -1,20 +1,13 @@
-#!/usr/bin/env groovy
-
 pipeline {
-
     agent any
-
+    options {
+        // Timeout counter starts AFTER agent is allocated
+        timeout(time: 1, unit: 'SECONDS')
+    }
     stages {
-        stage('Build') {
+        stage('Example') {
             steps {
-                echo 'Building...'
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                sh 'npm test'
+                echo 'Hello World'
             }
         }
     }
